@@ -12,7 +12,7 @@ License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.gz
-# Source0-md5: 693b93a36162d7d3e90f25f5bc71074b
+# Source0-md5:	693b93a36162d7d3e90f25f5bc71074b
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
