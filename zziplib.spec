@@ -115,7 +115,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %doc docs/*.html
 %endif
-#%attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
