@@ -1,6 +1,7 @@
-
+#
+# Conditional build:
 %bcond_without	doc	# - build witout documentation
-
+#
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
@@ -43,7 +44,7 @@ przestrzeñ nazw (u¿ywa prefiksu zzip_).
 Summary:	ZZipLib - Development Files
 Summary(pl):	Pliki dla programistów ZZipLib
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 These are the header files needed to develop programs using zziplib.
@@ -56,7 +57,7 @@ korzystaj±cych z biblioteki zziplib.
 Summary:	ZZipLib static library
 Summary(pl):	Statyczna biblioteka ZZipLib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 ZZipLib static library.
