@@ -5,18 +5,19 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
-Version:	0.12.23
-Release:	3
+Version:	0.13.36
+Release:	1
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.gz
-# Source0-md5:	693b93a36162d7d3e90f25f5bc71074b
+Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
+# Source0-md5:	263f642825b8a9d56f7bfc26404e965d
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libtool >= 1:1.4.3
+BuildRequires:	xmlto
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -75,7 +76,8 @@ Statyczna biblioteka ZZipLib.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-builddir
 
 %{__make}
 %if %{with doc}
@@ -105,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog TODO docs/COPYING.Z*
 %attr(755,root,root) %{_bindir}/zz[!i]*
+%attr(755,root,root) %{_bindir}/unzz*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
@@ -112,13 +115,15 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %doc docs/*.html
 %endif
-%attr(755,root,root) %{_bindir}/zzip-config
+#%attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
 %if %{with doc}
 %{_mandir}/man3/*.3*
 %endif
+%{_pkgconfigdir}/*.pc
+%{_aclocaldir}/*.m4
 
 %files static
 %defattr(644,root,root,755)
