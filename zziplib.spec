@@ -1,14 +1,17 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
-Version:	0.10.64
-Release:	2
+Version:	0.12.23
+Release:	1
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/%{name}/%{name}-%{version}.tar.gz
 URL:		http://zziplib.sourceforge.net/
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
+BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,6 +64,10 @@ Statyczna biblioteka ZZipLib.
 %setup -q
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
@@ -68,11 +75,14 @@ Statyczna biblioteka ZZipLib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-	
-mv -f zzip-INTRO.html index.html || true
-rm -f zzip-SFNET.html
+
+%{__make} install-man3 -C docs \
+	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f docs/zziplib[012].html
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,17 +92,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog TODO COPYING.Z*
-%attr(755,root,root) %{_bindir}/zz[^i]*
+%doc ChangeLog TODO docs/COPYING.Z*
+%attr(755,root,root) %{_bindir}/zz[!i]*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc SDL_* zzcat.c zzdir.c zziptest.c *.html
+%doc docs/*.html
 %attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
+%{_mandir}/man3/*.3*
 
 %files static
 %defattr(644,root,root,755)
