@@ -2,7 +2,7 @@ Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
 Version:	0.10.64
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog TODO COPYING.Z*
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/zz[^i]*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
