@@ -11,7 +11,7 @@ Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/%{name}/%{name}-%{version}.ta
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libtool >= 1:1.4.2-9
+BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
