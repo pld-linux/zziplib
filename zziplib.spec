@@ -40,7 +40,7 @@ przestrzeñ nazw (u¿ywa prefiksu zzip_).
 Summary:	ZZipLib - Development Files
 Summary(pl):	Pliki dla programistów ZZipLib
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description devel
 These are the header files needed to develop programs using zziplib.
@@ -53,7 +53,7 @@ korzystaj±cych z biblioteki zziplib.
 Summary:	ZZipLib static library
 Summary(pl):	Statyczna biblioteka ZZipLib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 ZZipLib static library.
