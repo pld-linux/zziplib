@@ -1,5 +1,5 @@
 
-%bcond_without docs	# - build witout documentation
+%bcond_without	doc	# - build witout documentation
 
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
@@ -75,7 +75,7 @@ Statyczna biblioteka ZZipLib.
 %configure
 
 %{__make}
-%if %{with docs}
+%if %{with doc}
 %{__make} doc
 %endif
 
@@ -106,14 +106,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%if %{with docs}
+%if %{with doc}
 %doc docs/*.html
 %endif
 %attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
-%if %{with docs}
+%if %{with doc}
 %{_mandir}/man3/*.3*
 %endif
 
