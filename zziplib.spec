@@ -6,12 +6,12 @@ Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
 Version:	0.12.23
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.gz
 # Source0-md5: 693b93a36162d7d3e90f25f5bc71074b
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
@@ -68,6 +68,8 @@ Statyczna biblioteka ZZipLib.
 %prep
 %setup -q
 
+%{__perl} -pi -e 's/use strict/#&/' docs/*.pl
+
 %build
 %{__libtoolize}
 %{__aclocal}
@@ -86,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%if %{with docs}
+%if %{with doc}
 %{__make} install-man3 -C docs \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -115,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/*
 %if %{with doc}
-#%{_mandir}/man3/*.3*
+%{_mandir}/man3/*.3*
 %endif
 
 %files static
