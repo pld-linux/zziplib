@@ -7,7 +7,7 @@ Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
