@@ -1,7 +1,7 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
-Version:	0.10.27
+Version:	0.11.15
 Release:	1
 Epoch:		1
 License:	LGPL
@@ -71,9 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+cd zzip
 mv -f zzip-INTRO.html index.html
 rm -f zzip-SFNET.html
-gzip -9nf ChangeLog README TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,13 +83,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc zzip/{ChangeLog,README,TODO}
 %attr(755,root,root) %{_bindir}/zz???
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc SDL_* zzcat.c zzdir.c zziptest.c *.html
+%doc zzip/{SDL_*.[ch],zzcat.c,zzdir.c,*.html}
 %attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
