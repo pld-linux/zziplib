@@ -5,14 +5,14 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
-Version:	0.13.36
+Version:	0.13.38
 Release:	1
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
-# Source0-md5:	263f642825b8a9d56f7bfc26404e965d
+# Source0-md5:	3eccd9b39c057eb49652e90914abfdf5
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -75,6 +75,7 @@ Statyczna biblioteka ZZipLib.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-builddir
