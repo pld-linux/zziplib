@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc SDL_* zzcat.c zzdir.c zziptest.c *.html
 %attr(755,root,root) %{_bindir}/zzip-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/*
 
 %files static
