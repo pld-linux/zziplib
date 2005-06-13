@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	doc	# - build witout documentation
+%bcond_without	doc	# - build without documentation
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
@@ -9,7 +9,6 @@ Version:	0.13.38
 Release:	1
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
-Vendor:		Guido Draheim <guidod@gmx.de>
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
 # Source0-md5:	3eccd9b39c057eb49652e90914abfdf5
