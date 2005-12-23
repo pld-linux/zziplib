@@ -5,13 +5,13 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
 Name:		zziplib
-Version:	0.13.44
+Version:	0.13.45
 Release:	1
 Epoch:		1
 License:	LGPL with exceptions (see COPYING.ZZIP)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
-# Source0-md5:	fbb6766ae59c120b5ce4bf9f84e9c827
+# Source0-md5:	687e6e487795680dd1e8ea9c1670e0ab
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -68,11 +68,9 @@ Statyczna biblioteka ZZipLib.
 %prep
 %setup -q
 
-%{__perl} -pi -e 's/use strict/#&/' docs/*.pl
-
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -80,6 +78,7 @@ Statyczna biblioteka ZZipLib.
 	--disable-builddir
 
 %{__make}
+%{__make} check
 %if %{with doc}
 %{__make} doc
 %endif
