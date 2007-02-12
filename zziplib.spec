@@ -3,7 +3,7 @@
 %bcond_without	doc	# - build without documentation
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
-Summary(pl.UTF-8):   ZZipLib - biblioteka dostępu do archiwów ZIP
+Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
 Name:		zziplib
 Version:	0.13.47
 Release:	1
@@ -43,7 +43,7 @@ przestrzeń nazw (używa prefiksu zzip_).
 
 %package devel
 Summary:	ZZipLib - Development Files
-Summary(pl.UTF-8):   Pliki dla programistów ZZipLib
+Summary(pl.UTF-8):	Pliki dla programistów ZZipLib
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -56,7 +56,7 @@ korzystających z biblioteki zziplib.
 
 %package static
 Summary:	ZZipLib static library
-Summary(pl.UTF-8):   Statyczna biblioteka ZZipLib
+Summary(pl.UTF-8):	Statyczna biblioteka ZZipLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
