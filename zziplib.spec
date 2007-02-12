@@ -3,7 +3,7 @@
 %bcond_without	doc	# - build without documentation
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
-Summary(pl):	ZZipLib - biblioteka dostêpu do archiwów ZIP
+Summary(pl.UTF-8):   ZZipLib - biblioteka dostÄ™pu do archiwÃ³w ZIP
 Name:		zziplib
 Version:	0.13.47
 Release:	1
@@ -31,39 +31,39 @@ as it is sometimes used with gamedata or script repositories. The
 library itself is fully multithreaded, and it is namespace clean using
 the zzip_ prefix for its exports and declarations.
 
-%description -l pl
-ZZipLib pozwala na odczyt plików skompresowanych w archiwach zip,
-u¿ywaj±c do dekompresji wolnodostêpnych algorytmów z biblioteki zlib.
-ZZipLib dostarcza dodatkowe API do przezroczystego dostêpu do plików
+%description -l pl.UTF-8
+ZZipLib pozwala na odczyt plikÃ³w skompresowanych w archiwach zip,
+uÅ¼ywajÄ…c do dekompresji wolnodostÄ™pnych algorytmÃ³w z biblioteki zlib.
+ZZipLib dostarcza dodatkowe API do przezroczystego dostÄ™pu do plikÃ³w
 rzeczywistych lub umieszczonych w archiwach zip przy pomocy takiej
-samej ¶cie¿ki. Jest to przydatne przy trzymaniu wielu plików w jednym
+samej Å›cieÅ¼ki. Jest to przydatne przy trzymaniu wielu plikÃ³w w jednym
 archiwum, co bywa stosowane w przypadku danych dla gier lub
-repozytoriów. Biblioteka jest w pe³ni wielow±tkowa i ma czyst±
-przestrzeñ nazw (u¿ywa prefiksu zzip_).
+repozytoriÃ³w. Biblioteka jest w peÅ‚ni wielowÄ…tkowa i ma czystÄ…
+przestrzeÅ„ nazw (uÅ¼ywa prefiksu zzip_).
 
 %package devel
 Summary:	ZZipLib - Development Files
-Summary(pl):	Pliki dla programistów ZZipLib
+Summary(pl.UTF-8):   Pliki dla programistÃ³w ZZipLib
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 These are the header files needed to develop programs using zziplib.
 
-%description devel -l pl
-Ten pakiet zawiera plikia nag³ówkowe potrzebne do tworzenia programów
-korzystaj±cych z biblioteki zziplib.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera plikia nagÅ‚Ã³wkowe potrzebne do tworzenia programÃ³w
+korzystajÄ…cych z biblioteki zziplib.
 
 %package static
 Summary:	ZZipLib static library
-Summary(pl):	Statyczna biblioteka ZZipLib
+Summary(pl.UTF-8):   Statyczna biblioteka ZZipLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 ZZipLib static library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka ZZipLib.
 
 %prep
