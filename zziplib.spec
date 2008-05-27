@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	doc	# - build without documentation
+%bcond_without	doc	# build without documentation
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
@@ -107,24 +107,49 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog TODO docs/COPYING.Z*
-%attr(755,root,root) %{_bindir}/zz[!i]*
-%attr(755,root,root) %{_bindir}/unz*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_bindir}/zzcat
+%attr(755,root,root) %{_bindir}/zzdir
+%attr(755,root,root) %{_bindir}/zzxor*
+%attr(755,root,root) %{_bindir}/unzip-mem
+%attr(755,root,root) %{_bindir}/unzzip*
+%attr(755,root,root) %{_libdir}/libzzip-0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libzzip-0.so.13
+%attr(755,root,root) %{_libdir}/libzzipfseeko-0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libzzipfseeko-0.so.13
+%attr(755,root,root) %{_libdir}/libzzipmmapped-0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libzzipmmapped-0.so.13
+%attr(755,root,root) %{_libdir}/libzzipwrap-0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libzzipwrap-0.so.13
 
 %files devel
 %defattr(644,root,root,755)
 %if %{with doc}
 %doc docs/*.html
 %endif
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libzzip.so
+%attr(755,root,root) %{_libdir}/libzzipfseeko.so
+%attr(755,root,root) %{_libdir}/libzzipmmapped.so
+%attr(755,root,root) %{_libdir}/libzzipwrap.so
+%{_libdir}/libzzip.la
+%{_libdir}/libzzipfseeko.la
+%{_libdir}/libzzipmmapped.la
+%{_libdir}/libzzipwrap.la
+%{_includedir}/zzip
+%{_includedir}/zzip*.h
 %if %{with doc}
-%{_mandir}/man3/*.3*
+%{_mandir}/man3/__zzip_*.3*
+%{_mandir}/man3/zzip_*.3*
 %endif
-%{_pkgconfigdir}/*.pc
-%{_aclocaldir}/*.m4
+%{_pkgconfigdir}/zzip-zlib-config.pc
+%{_pkgconfigdir}/zzipfseeko.pc
+%{_pkgconfigdir}/zziplib.pc
+%{_pkgconfigdir}/zzipmmapped.pc
+%{_pkgconfigdir}/zzipwrap.pc
+%{_aclocaldir}/zziplib.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libzzip.a
+%{_libdir}/libzzipfseeko.a
+%{_libdir}/libzzipmmapped.a
+%{_libdir}/libzzipwrap.a
