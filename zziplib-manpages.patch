@@ -1,0 +1,14 @@
+--- zziplib-0.13.54/docs/Makefile.am~	2009-05-24 14:09:35.000000000 +0200
++++ zziplib-0.13.54/docs/Makefile.am	2009-06-08 11:58:59.000000000 +0200
+@@ -178,9 +178,9 @@
+ 	; fi
+ 
+ install-man3 : manpages.tar
+-	$(mkinstalldirs) $(DESTDIR)$(mandir)/man3
++	$(mkinstalldirs) $(DESTDIR)$(mandir)
+ 	P=`pwd` ; test -s manpages.tar || exit 1 \
+-	; cd $(DESTDIR)$(mandir)/man3 && $(PAX_TAR_EXTRACT) $$P/manpages.tar \
++	; cd $(DESTDIR)$(mandir) && $(PAX_TAR_EXTRACT) $$P/manpages.tar \
+         ; true
+ 
+ unpack : manpages.tar htmpages.tar
