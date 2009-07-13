@@ -14,6 +14,7 @@ Source0:	http://dl.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
 # Source0-md5:	7bbeee86d75d1bbcc96d07c6df9de544
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-manpages.patch
+Patch2:		%{name}-fetch.patch
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -71,6 +72,7 @@ Statyczna biblioteka ZZipLib.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
