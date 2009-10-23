@@ -84,7 +84,7 @@ Statyczna biblioteka ZZipLib.
 	--disable-builddir
 
 %{__make}
-%{__make} check
+%{__make} -j1 check
 %if %{with doc}
 %{__make} doc
 %endif
