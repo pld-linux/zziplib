@@ -17,8 +17,13 @@ Patch1:		%{name}-manpages.patch
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	libtool >= 1:1.4.3
+BuildRequires:	pkgconfig
+BuildRequires:	python
+BuildRequires:	python-modules
 BuildRequires:	xmlto
+BuildRequires:	zip
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
