@@ -8,7 +8,7 @@ Name:		zziplib
 Version:	0.13.59
 Release:	1
 Epoch:		1
-License:	LGPL with exceptions (see COPYING.ZZIP)
+License:	LGPL v2 or MPL 1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
 # Source0-md5:	14b5a6fc229afe9916d48358479568d3
@@ -101,9 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %{__make} install-man3 -C docs \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm -f docs/zziplib[012].html
 %endif
+
+# we don't need these compat symlinks
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libzzip*-0.so.{10,11,12}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog TODO docs/COPYING.Z*
+%doc ChangeLog README TODO docs/COPYING.ZLIB
 %attr(755,root,root) %{_bindir}/zzcat
 %attr(755,root,root) %{_bindir}/zzdir
 %attr(755,root,root) %{_bindir}/zzxor*
@@ -131,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %if %{with doc}
-%doc docs/*.html
+%doc docs/*.{html,css}
 %endif
 %attr(755,root,root) %{_libdir}/libzzip.so
 %attr(755,root,root) %{_libdir}/libzzipfseeko.so
