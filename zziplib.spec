@@ -6,7 +6,7 @@ Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
 Name:		zziplib
 Version:	0.13.62
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL v2 or MPL 1.1
 Group:		Libraries
