@@ -1,18 +1,18 @@
 #
 # Conditional build:
-%bcond_without	doc	# build without documentation
+%bcond_without	apidocs	# API documentation
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
 Name:		zziplib
-Version:	0.13.62
-Release:	2
+Version:	0.13.68
+Release:	1
 Epoch:		1
 License:	LGPL v2 or MPL 1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
-# Source0-md5:	5fe874946390f939ee8f4abe9624b96c
-Patch0:		%{name}-ac.patch
+# Source0-md5:	8b0cc7c506b172a4938c3338b122c2f0
+Patch0:		%{name}-test.patch
 Patch1:		%{name}-manpages.patch
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.61
@@ -72,6 +72,18 @@ ZZipLib static library.
 %description static -l pl.UTF-8
 Statyczna biblioteka ZZipLib.
 
+%package apidocs
+Summary:	API documentation for ZZipLib library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki ZZipLib
+Group:		Documentation
+%{?noarchpackage}
+
+%description apidocs
+API documentation for ZZipLib library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki ZZipLib.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -88,7 +100,7 @@ Statyczna biblioteka ZZipLib.
 
 %{__make}
 %{__make} -j1 check
-%if %{with doc}
+%if %{with apidocs}
 %{__make} doc
 %endif
 
@@ -98,13 +110,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%if %{with doc}
+%if %{with apidocs}
 %{__make} install-man3 -C docs \
 	DESTDIR=$RPM_BUILD_ROOT
 %endif
 
 # we don't need these compat symlinks
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libzzip*-0.so.{10,11,12}
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libzzip*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -131,20 +145,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%if %{with doc}
-%doc docs/*.{html,css}
-%endif
 %attr(755,root,root) %{_libdir}/libzzip.so
 %attr(755,root,root) %{_libdir}/libzzipfseeko.so
 %attr(755,root,root) %{_libdir}/libzzipmmapped.so
 %attr(755,root,root) %{_libdir}/libzzipwrap.so
-%{_libdir}/libzzip.la
-%{_libdir}/libzzipfseeko.la
-%{_libdir}/libzzipmmapped.la
-%{_libdir}/libzzipwrap.la
 %{_includedir}/zzip
 %{_includedir}/zzip*.h
-%if %{with doc}
+%if %{with apidocs}
 %{_mandir}/man3/__zzip_*.3*
 %{_mandir}/man3/zzip_*.3*
 %endif
@@ -161,3 +168,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libzzipfseeko.a
 %{_libdir}/libzzipmmapped.a
 %{_libdir}/libzzipwrap.a
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%doc docs/*.{html,css}
+%endif
