@@ -76,7 +76,7 @@ Statyczna biblioteka ZZipLib.
 Summary:	API documentation for ZZipLib library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki ZZipLib
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 API documentation for ZZipLib library.
