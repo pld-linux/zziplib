@@ -5,14 +5,15 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
 Name:		zziplib
-Version:	0.13.68
+Version:	0.13.72
 Release:	1
 Epoch:		1
 License:	LGPL v2 or MPL 1.1
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/zziplib/%{name}-%{version}.tar.bz2
-# Source0-md5:	8b0cc7c506b172a4938c3338b122c2f0
-Patch0:		%{name}-test.patch
+#Source0Download: https://github.com/gdraheim/zziplib/tags
+Source0:	https://github.com/gdraheim/zziplib/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	43555e7eafc5c1a1178a35e716c40500
+Patch0:		%{name}-fpe.patch
 Patch1:		%{name}-manpages.patch
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.61
@@ -89,14 +90,17 @@ Dokumentacja API biblioteki ZZipLib.
 %patch0 -p1
 %patch1 -p1
 
+# stick to autotools for now
+%{__mv} old.configure.ac configure.ac
+%{__rm} GNUmakefile
+
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-	--disable-builddir
+%configure
 
 %{__make}
 %{__make} -j1 check
@@ -111,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %if %{with apidocs}
-%{__make} install-man3 -C docs \
+%{__make} -C docs install-man3 \
 	DESTDIR=$RPM_BUILD_ROOT
 %endif
 

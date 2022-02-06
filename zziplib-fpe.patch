@@ -1,0 +1,11 @@
+--- zziplib-0.13.72/bins/unzip-mem.c.orig	2021-01-05 00:05:08.000000000 +0100
++++ zziplib-0.13.72/bins/unzip-mem.c	2022-02-06 18:37:25.525184220 +0100
+@@ -201,7 +201,7 @@ static void zzip_mem_entry_direntry_done
+     printf("--------  ------  ------- -----                           ----\n");
+     printf("%8li%c       %8li%c %3li%%                     %8li %s\n",
+ 	   L sum_usize, exp, L sum_csize, exp, 
+-	   L (100 - (sum_csize*100/sum_usize)), L sum_files, 
++	   L (100 - (sum_usize == 0 ? 0 : (sum_csize*100/sum_usize))), L sum_files, 
+ 	   sum_files == 1 ? "file" : "files");
+ }
+ 
