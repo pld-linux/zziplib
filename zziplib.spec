@@ -24,6 +24,7 @@ BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	python-modules
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	xmlto
 BuildRequires:	zip
 BuildRequires:	zlib-devel
