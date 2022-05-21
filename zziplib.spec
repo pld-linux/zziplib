@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	apidocs	# API documentation
+%bcond_without	tests	# do not perform "make check"
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
@@ -103,7 +104,7 @@ Dokumentacja API biblioteki ZZipLib.
 %configure
 
 %{__make}
-%{__make} -j1 check
+%{?with_tests:%{__make} -j1 check}
 %if %{with apidocs}
 %{__make} doc
 %endif
