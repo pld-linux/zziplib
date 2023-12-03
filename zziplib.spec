@@ -22,8 +22,8 @@ BuildRequires:	automake >= 1:1.7
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	pkgconfig
-BuildRequires:	python
-BuildRequires:	python-modules
+BuildRequires:	python3
+BuildRequires:	python3-modules
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	xmlto
 BuildRequires:	zip
