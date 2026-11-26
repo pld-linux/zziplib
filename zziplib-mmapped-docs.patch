@@ -1,0 +1,13 @@
+# zzipmakedocs.py takes the first #include as the main header; with format.h first no mmapped man pages are generated
+--- zziplib-0.13.80.orig/zzip/mmapped.c	2026-11-26 03:38:15.963333333 +0100
++++ zziplib-0.13.80/zzip/mmapped.c	2026-11-26 03:38:16.037843537 +0100
+@@ -27,8 +27,8 @@
+ #define _GNU_SOURCE _glibc_developers_are_idiots_to_call_strndup_gnu_specific_
+ #endif
+ 
+-#include <zzip/format.h>
+ #include <zzip/mmapped.h>
++#include <zzip/format.h>
+ #include <zzip/fetch.h>
+ #include <zzip/__debug.h>
+ #include <zzip/__errno.h>

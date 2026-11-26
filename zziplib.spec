@@ -6,16 +6,18 @@
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
 Name:		zziplib
-Version:	0.13.72
+Version:	0.13.80
 Release:	1
 Epoch:		1
 License:	LGPL v2 or MPL 1.1
 Group:		Libraries
 #Source0Download: https://github.com/gdraheim/zziplib/tags
 Source0:	https://github.com/gdraheim/zziplib/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	43555e7eafc5c1a1178a35e716c40500
-Patch0:		%{name}-fpe.patch
-Patch1:		%{name}-manpages.patch
+# Source0-md5:	323b8faf6c5226c9878aea2db9e78f83
+Patch0:		%{name}-manpages.patch
+Patch1:		%{name}-aligned-access.patch
+Patch2:		%{name}-test-readme.patch
+Patch3:		%{name}-mmapped-docs.patch
 URL:		http://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.7
@@ -91,6 +93,8 @@ Dokumentacja API biblioteki ZZipLib.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 # stick to autotools for now
 %{__mv} old.configure.ac configure.ac
@@ -105,7 +109,11 @@ Dokumentacja API biblioteki ZZipLib.
 %configure
 
 %{__make}
-%{?with_tests:%{__make} -j1 check}
+%if %{with tests}
+# shipped test/test.zip holds an outdated README; let make regenerate it
+%{__rm} test/test.zip
+%{__make} -j1 check
+%endif
 %if %{with apidocs}
 %{__make} doc
 %endif
@@ -134,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README TODO docs/COPYING.ZLIB
+%doc ChangeLog README.MD TODO docs/COPYING.ZLIB
 %attr(755,root,root) %{_bindir}/zzcat
 %attr(755,root,root) %{_bindir}/zzdir
 %attr(755,root,root) %{_bindir}/zzxor*

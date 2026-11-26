@@ -1,0 +1,13 @@
+# unbalanced if/fi: the closing "fi" sits outside AC_CACHE_CHECK, which breaks configure with current autoconf
+--- zziplib-0.13.80.orig/m4/ax_check_aligned_access_required.m4	2026-11-26 03:30:32.933333333 +0100
++++ zziplib-0.13.80/m4/ax_check_aligned_access_required.m4	2026-11-26 03:30:33.006348795 +0100
+@@ -55,8 +55,8 @@
+      [ax_cv_have_aligned_access_required=yes],
+      [ax_cv_have_aligned_access_required=no],
+      [ax_cv_have_aligned_access_required=no])
+-  ])
+ fi
++  ])
+ if test "$ax_cv_have_aligned_access_required" = yes ; then
+   AC_DEFINE([HAVE_ALIGNED_ACCESS_REQUIRED], [1],
+     [Define if pointers to integers require aligned access])
