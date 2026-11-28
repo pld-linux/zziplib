@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	apidocs	# API documentation
-%bcond_without	tests	# do not perform "make check"
+%bcond_without	tests	# test suite
 #
 Summary:	ZZipLib - libZ-based ZIP-access Library
 Summary(pl.UTF-8):	ZZipLib - biblioteka dostępu do archiwów ZIP
@@ -18,7 +18,7 @@ Patch0:		%{name}-manpages.patch
 Patch1:		%{name}-aligned-access.patch
 Patch2:		%{name}-test-readme.patch
 Patch3:		%{name}-mmapped-docs.patch
-URL:		http://zziplib.sourceforge.net/
+URL:		https://zziplib.sourceforge.net/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	docbook-dtd412-xml
@@ -56,7 +56,7 @@ przestrzeń nazw (używa prefiksu zzip_).
 Summary:	ZZipLib - Development Files
 Summary(pl.UTF-8):	Pliki dla programistów ZZipLib
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 These are the header files needed to develop programs using zziplib.
@@ -69,7 +69,7 @@ korzystających z biblioteki zziplib.
 Summary:	ZZipLib static library
 Summary(pl.UTF-8):	Statyczna biblioteka ZZipLib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description static
 ZZipLib static library.
@@ -148,21 +148,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/zzxor*
 %attr(755,root,root) %{_bindir}/unzip-mem
 %attr(755,root,root) %{_bindir}/unzzip*
-%attr(755,root,root) %{_libdir}/libzzip-0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzzip-0.so.13
-%attr(755,root,root) %{_libdir}/libzzipfseeko-0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzzipfseeko-0.so.13
-%attr(755,root,root) %{_libdir}/libzzipmmapped-0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzzipmmapped-0.so.13
-%attr(755,root,root) %{_libdir}/libzzipwrap-0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzzipwrap-0.so.13
+%{_libdir}/libzzip-0.so.*.*.*
+%ghost %{_libdir}/libzzip-0.so.13
+%{_libdir}/libzzipfseeko-0.so.*.*.*
+%ghost %{_libdir}/libzzipfseeko-0.so.13
+%{_libdir}/libzzipmmapped-0.so.*.*.*
+%ghost %{_libdir}/libzzipmmapped-0.so.13
+%{_libdir}/libzzipwrap-0.so.*.*.*
+%ghost %{_libdir}/libzzipwrap-0.so.13
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libzzip.so
-%attr(755,root,root) %{_libdir}/libzzipfseeko.so
-%attr(755,root,root) %{_libdir}/libzzipmmapped.so
-%attr(755,root,root) %{_libdir}/libzzipwrap.so
+%{_libdir}/libzzip.so
+%{_libdir}/libzzipfseeko.so
+%{_libdir}/libzzipmmapped.so
+%{_libdir}/libzzipwrap.so
 %{_includedir}/zzip
 %{_includedir}/zzip*.h
 %if %{with apidocs}
